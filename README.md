@@ -4,7 +4,7 @@ This project is my implementation of a secure and scalable Two-Tier Architecture
 
 ---
 
-## Step 1️⃣ Architecture Diagram & Summary
+## Step 1️⃣ Architecture Diagram 
 
 INTERNET  
    │  
