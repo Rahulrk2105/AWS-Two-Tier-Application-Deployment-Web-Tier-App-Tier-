@@ -166,7 +166,7 @@ echo "Hello from APP EC2 Backend";
 
 Confirmed connectivity from the Web Tier:
 ```sh
-curl http://<APP-Private-IP>:8080
+curl http://10.0.12.87:8080
 ```
 
 Once I saw the expected output, I knew the private networking and SG rules were correct.
