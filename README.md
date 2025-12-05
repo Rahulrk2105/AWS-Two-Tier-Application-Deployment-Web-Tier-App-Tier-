@@ -1,4 +1,4 @@
-🚀 AWS Two-Tier Application Deployment (Web Tier + App Tier + Classic Load Balancer)
+ AWS Two-Tier Application Deployment (Web Tier + App Tier )
 
 This project is my implementation of a secure and scalable Two-Tier Architecture on AWS. I built everything manually using the AWS Management Console to strengthen my understanding of networking, compute, security, and architectural design.
 
@@ -6,8 +6,30 @@ The project consists of a public Web Tier running NGINX behind a Classic Load Ba
 
 My goal with this project was to design a clean, professional, production-style AWS architecture while staying fully within the AWS Free Tier.
 
-🏗️ Architecture Summary
-
+🏗️ Architecture Diagram & Summary
+INTERNET
+   │
+   ▼
+AWS Internet Gateway
+   │
+   ▼
+VPC (10.0.0.0/16)
+   ├── Public Subnet-1 (10.0.1.0/24)
+   │     ├── EC2 Instance: my-web-ec2
+   │     │     └── Security Group: my-web-sg
+   │     └── NAT Gateway (Elastic IP)
+   │
+   └── Private Subnet-1 (10.0.11.0/24)
+         ├── EC2 Instance: my-app-ec2
+         │     └── Security Group: my-app-sg
+         │
+         └── API Call ───────────────► Python Backend (Private Subnet-2)
+            Private Subnet-2 (10.0.12.0/24)
+               ├── Python Backend (Port 8080)
+               │     └── SimpleHTTPServer
+               └── Security Group: app-sg
+                     └── Allows inbound on port 8030 from my-web-sg
+                     
 I created a full two-tier setup with isolated responsibilities:
 
 1️⃣ Web Tier (Public Subnets)
